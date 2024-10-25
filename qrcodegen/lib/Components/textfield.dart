@@ -17,6 +17,9 @@ class CustomTextField extends StatelessWidget {
     final prov = Provider.of<QrProvider>(context, listen: true);
     return TextField(
       autocorrect: false,
+      onSubmitted: (value) {
+        prov.toggleTarget();
+      },
       onChanged: (value) {
         onChanged(value);
       },

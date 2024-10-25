@@ -9,12 +9,13 @@ import 'package:share_plus/share_plus.dart';
 
 class QrProvider extends ChangeNotifier {
   // The data variable is used to store the data that will be used to generate the QR code.
-  String _data = 'https://www.osmanseferoglu.com';
+  String _data = 'Karekod';
   String get data => _data;
 
   // The setData method is used to update the data variable.
   void setData(String value) {
     _data = value;
+   
     notifyListeners();
   }
 
@@ -73,7 +74,7 @@ class QrProvider extends ChangeNotifier {
   List<String> get dataType => _dataType;
 
   // The selectedDataType variable is used to store the selected data type.
-  String _selectedDataType = 'URL';
+  String _selectedDataType = 'Text';
   String get selectedDataType => _selectedDataType;
 
   // The setSelectedDataType method is used to update the selectedDataType variable.
