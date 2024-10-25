@@ -227,6 +227,8 @@ class _WiFiPasswordSection extends StatelessWidget {
     return Column(
       children: [
         SwitchListTile.adaptive(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           contentPadding: const EdgeInsets.symmetric(horizontal: 10),
           secondary: prov.showPassword
               ? const Icon(SFIcons.sf_lock_circle_fill)
@@ -237,28 +239,31 @@ class _WiFiPasswordSection extends StatelessWidget {
           onChanged: prov.setShowPassword,
         ),
         if (prov.showPassword)
-          Row(
-            children: [
-              Expanded(
-                child: CustomTextField(
-                  hintText: 'Password',
-                  onChanged: prov.setPassword,
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 5.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: CustomTextField(
+                    hintText: 'Password',
+                    onChanged: prov.setPassword,
+                  ),
                 ),
-              ),
-              const SizedBox(width: 10),
-              DropdownButton(
-                value: prov.encryptionType,
-                icon: const SFIcon(SFIcons.sf_chevron_down, fontSize: 16),
-                underline: Container(),
-                items: const [
-                  DropdownMenuItem(value: 'WPA', child: Text('WPA')),
-                  DropdownMenuItem(value: 'WEP', child: Text('WEP')),
-                ],
-                onChanged: (value) {
-                  prov.setEncryptionType(value!);
-                },
-              ),
-            ],
+                const SizedBox(width: 10),
+                DropdownButton(
+                  value: prov.encryptionType,
+                  icon: const SFIcon(SFIcons.sf_chevron_down, fontSize: 16),
+                  underline: Container(),
+                  items: const [
+                    DropdownMenuItem(value: 'WPA', child: Text('WPA')),
+                    DropdownMenuItem(value: 'WEP', child: Text('WEP')),
+                  ],
+                  onChanged: (value) {
+                    prov.setEncryptionType(value!);
+                  },
+                ),
+              ],
+            ),
           ),
       ],
     );
